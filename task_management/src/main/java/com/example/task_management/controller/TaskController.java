@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -46,5 +48,15 @@ public class TaskController {
     @GetMapping("/searchByName")
     private List<Task> searchByName(@RequestParam("title") String title) {
         return taskService.searchByName(title);
+    }
+
+    @GetMapping("/taskCountsByStatus")
+    public Map<String, Integer> getTaskCountsByStatus() {
+        List<Task> tasks = taskService.getAllTask();
+        Map<String, Integer> statusCountMap = new HashMap<>();
+        for (Task task : tasks) {
+            statusCountMap.put(task.getStatus(), statusCountMap.getOrDefault(task.getStatus(), 0) + 1);
+        }
+        return statusCountMap;
     }
 }

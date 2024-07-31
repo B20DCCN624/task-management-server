@@ -13,19 +13,17 @@ public class Task {
     private String title;
     private String description;
     private LocalDate date;
-    private String priority;
-    private String employee;
+    private String status;
 
     public Task() {
     }
 
-    public Task(int id, String title, String description, LocalDate date, String priority, String employee) {
+    public Task(int id, String title, String description, LocalDate date, String status) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.date = date;
-        this.priority = priority;
-        this.employee = employee;
+        this.status = status;
     }
 
     public int getId() {
@@ -60,19 +58,11 @@ public class Task {
         this.date = date;
     }
 
-    public String getPriority() {
-        return priority;
+    public String getStatus() {
+        return status;
     }
 
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
-
-    public String getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(String employee) {
-        this.employee = employee;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
