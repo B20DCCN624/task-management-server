@@ -42,4 +42,9 @@ public class TaskController {
         taskService.updateTask(task, id);
         return existingTask;
     }
+
+    @GetMapping("/searchByName")
+    private List<Task> searchByName(@RequestParam("title") String title) {
+        return taskService.searchByName(title);
+    }
 }
